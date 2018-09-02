@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Biz126.WebUI</name>
+    </assembly>
+    <members>
+        <member name="M:Biz126.WebUI.Areas.Fonts.Controllers.FontController.List">
+            <summary>
+            可用字体列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Biz126.WebUI.Core.Font.GetFontPath(System.String)">
+            <summary>
+            指定字体的物理路径
+            </summary>
+            <param name="font"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Biz126.WebUI.Core.Font.List">
+            <summary>
+            获取全部字体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Biz126.WebUI.Core.Font.Config">
+            <summary>
+            取配置
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
