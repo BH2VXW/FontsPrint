@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
+
 namespace Biz126.WebUI.Areas.Fonts.Controllers
 {
     [Route("api/Fonts/[controller]/[action]")]
@@ -47,29 +48,40 @@ namespace Biz126.WebUI.Areas.Fonts.Controllers
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
-        public string Review(Models.FontRequest request)
+        [ModelValidationFilterAttribute]
+        public Models.ReturnModel<string> Print(Models.FontRequest request)
         {
+            var result = new Models.ReturnModel<string>
+            {
+                Status = false,
+                Message = "内容打印失败，请重试",
+                Data = string.Empty
+            };
             try
             {
-                if (string.IsNullOrEmpty(request.font) || string.IsNullOrEmpty(request.body))
-                {
-                    return string.Empty;
-                }
                 string fontpath = fontcore.GetFontPath(request.font);
                 Logger.Log4Net.LogInfo($"[当前字体]:{request.font},路径:{fontpath}");
+                Logger.Log4Net.LogInfo($"[查询记录][使用字体]:{request.font},[生成内容]:{request.body}");
                 if (!string.IsNullOrEmpty(fontpath))
                 {
-                    //return File(Biz126.ImageLib.CreateImages.CreateImage(fontpath,request.body), "image/png"); 
-                    return $"data:image/png;base64,{Convert.ToBase64String(Biz126.ImageLib.CreateImages.CreateImage(fontpath, request.body))}";
+                    result.Status = true;
+                    result.Message = "生成成功";
+                    result.Data = $"data:image/png;base64,{Convert.ToBase64String(Biz126.ImageLib.CreateImages.CreateImage(fontpath, request.body))}";
+
                 }
             }
             catch (Exception e)
             {
-                Logger.Log4Net.ErrorInfo($"[当前字体]:{request.font},异常信息:",e);
+                Logger.Log4Net.ErrorInfo($"[当前字体]:{request.font},异常信息:",e);                
             }
-            
-            return string.Empty;
+
+            return result;
         }
     }
 }

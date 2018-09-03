@@ -34,7 +34,7 @@ namespace Biz126.WebUI.Core
         /// <returns></returns>
         public List<string> List()
         {
-            Logger.Log4Net.LogInfo($"[字体文件夹]:{fonts_path},是否存在:{Directory.Exists(fonts_path)}");
+            //Logger.Log4Net.LogInfo($"[字体文件夹]:{fonts_path},是否存在:{Directory.Exists(fonts_path)}");
 
             return WebTools.FileObj.FileList(fonts_path);
         }

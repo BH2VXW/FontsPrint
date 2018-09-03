@@ -47,20 +47,29 @@
             //预览
             $('#btn_submit').click(function () {
                 $.ajax({
-                    url: '/api/Fonts/Font/Review',
+                    url: '/api/Fonts/Font/Print',
                     type: 'post',
                     contentType: "application/json;charset=utf-8",
                     data: JSON.stringify(GetJsonData()),
                     success: function (result) {
-                        if (result) {
-                            $('#img_review').attr('src', result);
+                        if (result.status) {
+                            $('#img_review').attr('src', result.data);
                             $('#div_review').show();
                         }
                         else {
                             $('#div_review').hide();
-                            alert('请选择字体或输入文本，或出现异常');
+                            alert(result.message);
                         }
                         
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //alert(XMLHttpRequest.responseText);
+                        var err = '异常信息:';
+                        var error = JSON.parse(XMLHttpRequest.responseText);
+                        $.each(error, function (key, val) {
+                            err += val+';';
+                        });
+                        alert(err);
                     }
                 });
             });
