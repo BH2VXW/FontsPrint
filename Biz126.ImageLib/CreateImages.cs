@@ -14,9 +14,9 @@ namespace Biz126.ImageLib
         /// <param name="fontpath">指定的字体路径</param>
         /// <param name="text">指定的文字内容</param>
         /// <returns></returns>
-        public static byte[] CreateImage(string fontpath, string text,int font_size=30)
+        public static byte[] CreateImage(string fontpath, string text,float font_size=100)
         {
-            var info = new SKImageInfo(512, 256);
+            var info = new SKImageInfo(1100, 480);
             using (var surface = SKSurface.Create(info))
             {
                 var canvas = surface.Canvas;
@@ -34,6 +34,7 @@ namespace Biz126.ImageLib
                 };
                 var coord = new SKPoint(info.Width / 2, (info.Height + paint.TextSize) / 2);
                 canvas.DrawText(text, coord, paint);
+                
 
                 using (var image = surface.Snapshot())
                 using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
