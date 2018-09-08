@@ -36,16 +36,17 @@ namespace Biz126.ImageLib
                 };
 
                 //支持文字多行
-                string[] txt = text.Split('\n').Reverse().ToArray();
-                for (int i = 0; i < txt.Length; i++)
+                List<string> list = text.Split('\n').ToList();
+                list.RemoveAll(x => { return string.IsNullOrEmpty(x.Trim()); });    //删除空行
+                list.Reverse(); //顺序反转
+                int i = 0;
+                list.ForEach(x =>
                 {
-                    var coord = new SKPoint(info.Width / 2, (info.Height + paint.TextSize * (txt.Length-i) - paint.TextSize * i*1.5F) / 2);
-                    canvas.DrawText(txt[i].Trim(), coord, paint);
-                }
-
-                //var coord = new SKPoint(info.Width / 2, (info.Height + paint.TextSize) / 2);
-                //canvas.DrawText(text, coord, paint);
-                
+                    var coord = new SKPoint(info.Width / 2, (info.Height + paint.TextSize * (list.Count - i) - paint.TextSize * i * 1.5F) / 2);
+                    canvas.DrawText(x.Trim(), coord, paint);
+                    i++;
+                    
+                });
 
                 using (var image = surface.Snapshot())
                 using (var data = image.Encode(SKEncodedImageFormat.Png, 100))
