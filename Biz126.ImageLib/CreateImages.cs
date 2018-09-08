@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using SkiaSharp;
+using System.Collections;
+using System.Linq;
 
 namespace Biz126.ImageLib
 {
@@ -32,8 +34,17 @@ namespace Biz126.ImageLib
                     TextSize = font_size,
                     Typeface= SkiaSharp.SKTypeface.FromFile(fontpath, 0)
                 };
-                var coord = new SKPoint(info.Width / 2, (info.Height + paint.TextSize) / 2);
-                canvas.DrawText(text, coord, paint);
+
+                //支持文字多行
+                string[] txt = text.Split('\n').Reverse().ToArray();
+                for (int i = 0; i < txt.Length; i++)
+                {
+                    var coord = new SKPoint(info.Width / 2, (info.Height + paint.TextSize * (txt.Length-i) - paint.TextSize * i*1.5F) / 2);
+                    canvas.DrawText(txt[i].Trim(), coord, paint);
+                }
+
+                //var coord = new SKPoint(info.Width / 2, (info.Height + paint.TextSize) / 2);
+                //canvas.DrawText(text, coord, paint);
                 
 
                 using (var image = surface.Snapshot())
