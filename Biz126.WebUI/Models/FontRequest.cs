@@ -15,6 +15,11 @@ namespace Biz126.WebUI.Models
         public string font { get; set; }
 
         /// <summary>
+        /// 字号
+        /// </summary>
+        public float fontsize { get; set; }
+
+        /// <summary>
         /// 内容
         /// </summary>
         [Required(ErrorMessage ="请输入要打印的内容")]

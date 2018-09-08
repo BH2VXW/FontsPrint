@@ -67,12 +67,12 @@ namespace Biz126.WebUI.Areas.Fonts.Controllers
             {
                 string fontpath = fontcore.GetFontPath(request.font);
                 Logger.Log4Net.LogInfo($"[当前字体]:{request.font},路径:{fontpath}");
-                Logger.Log4Net.LogInfo($"[查询记录][使用字体]:{request.font},[生成内容]:{request.body}");
+                Logger.Log4Net.LogInfo($"[查询记录][使用字体]:{request.font},[字号]:{request.fontsize},[生成内容]:{request.body}");
                 if (!string.IsNullOrEmpty(fontpath))
                 {
                     result.Status = true;
                     result.Message = "生成成功";
-                    result.Data = $"data:image/png;base64,{Convert.ToBase64String(Biz126.ImageLib.CreateImages.CreateImage(fontpath, request.body))}";
+                    result.Data = $"data:image/png;base64,{Convert.ToBase64String(Biz126.ImageLib.CreateImages.CreateImage(fontpath, request.body, request.fontsize))}";
 
                 }
             }

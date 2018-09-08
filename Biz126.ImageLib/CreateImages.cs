@@ -18,7 +18,17 @@ namespace Biz126.ImageLib
         /// <returns></returns>
         public static byte[] CreateImage(string fontpath, string text,float font_size=100)
         {
-            var info = new SKImageInfo(1100, 480);
+            //支持文字多行
+            List<string> list = text.Split('\n').ToList();
+            list.RemoveAll(x => { return string.IsNullOrEmpty(x.Trim()); });    //删除空行
+            list.Reverse(); //顺序反转
+            float line_height = 1.5F;   //行距
+            float height = 480;
+            if (list.Count * line_height*font_size >= height)
+            {
+                height = list.Count * line_height * font_size;
+            }
+            var info = new SKImageInfo(1100, (int)height);
             using (var surface = SKSurface.Create(info))
             {
                 var canvas = surface.Canvas;
@@ -35,10 +45,6 @@ namespace Biz126.ImageLib
                     Typeface= SkiaSharp.SKTypeface.FromFile(fontpath, 0)
                 };
 
-                //支持文字多行
-                List<string> list = text.Split('\n').ToList();
-                list.RemoveAll(x => { return string.IsNullOrEmpty(x.Trim()); });    //删除空行
-                list.Reverse(); //顺序反转
                 int i = 0;
                 list.ForEach(x =>
                 {
