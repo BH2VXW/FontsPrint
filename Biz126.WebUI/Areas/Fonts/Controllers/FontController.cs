@@ -45,7 +45,7 @@ namespace Biz126.WebUI.Areas.Fonts.Controllers
                 }
             });
 
-            return result;
+            return result.OrderBy(x => x.Value).ToDictionary(x => x.Key, y => y.Value);
         }
 
         /// <summary>
