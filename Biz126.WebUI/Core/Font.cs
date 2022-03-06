@@ -13,7 +13,7 @@ namespace Biz126.WebUI.Core
         private string fonts_path;
         public Font(string basepath)
         {
-            _basepath = $"{Directory.GetCurrentDirectory()}/{basepath}";
+            _basepath = $"{AppContext.BaseDirectory}{basepath}";
             fonts_path = $"{_basepath}/fonts";
         }
 
@@ -45,6 +45,7 @@ namespace Biz126.WebUI.Core
         public Dictionary<string, string> Config()
         {
             string conf = $"{_basepath}/setting.json";
+            Biz126.Logger.Log4Net.LogInfo($"配置文件路径：{conf}");
             string json = WebTools.FileObj.ReadFile(conf, "utf-8"); //取配置文件
             if (!"不存在相应的目录".Equals(json))
             {
