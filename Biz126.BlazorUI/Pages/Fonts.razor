@@ -1,0 +1,81 @@
+﻿@page "/fonts"
+@using Biz126.BlazorUI.Data
+@inject FontsServeice fontService
+
+<h3>字体预览</h3>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label for="select_font">选择字体</label>
+
+                <select class="form-control" id="select_font" name="font" @bind="request.font">
+                    @if (fontsList == null)
+                    {
+                        <option value="">暂无字体文件</option>
+                    }
+                    else
+                    {
+                        foreach( var kv in fontsList)
+                        {
+                            <option value="@kv.Key">@kv.Value</option>
+                        }
+                    }
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="select_font">字号</label>
+                <select class="form-control" id="select_fontsize" name="fontsize" @bind="request.fontsize">
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="16">16</option>
+                    <option value="18">18</option>
+                    <option value="24">24</option>
+                    <option value="30">30</option>
+                    <option value="40" selected>40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                    <option value="90">90</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="text_review">预览内容</label>
+                <textarea class="form-control" id="text_review" name="body" @bind="request.body" rows="3" placeholder="输入要预览的内容"></textarea>
+            </div>
+            @if (!string.IsNullOrEmpty(imgStr))
+            {
+                <div class="form-group" id="div_review">
+                <label for="select_font">预览</label>
+                <div>
+                    <img class="img-thumbnail" src="@imgStr" id="img_review" />
+                </div>
+            </div>
+            }
+            
+            <button type="button" class="btn btn-primary mb-2" @onclick="ReviewFont" >提交</button>
+        </form>
+    </div>
+</div>
+@code {
+    private Dictionary<string,string>? fontsList;
+    private string imgStr = "";
+    private Models.FontRequest request = new Models.FontRequest
+        {
+            fontsize = 60,
+            body = ""
+        };
+
+    protected override async Task OnInitializedAsync()
+    {
+        fontsList = await fontService.List();
+    }
+
+    private void ReviewFont()
+    {
+        imgStr = fontService.Print(request).Data;
+    }
+}

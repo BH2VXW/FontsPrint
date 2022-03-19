@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biz126.ImageLib", "Biz126.ImageLib\Biz126.ImageLib.csproj", "{61019471-A6F3-469A-8938-69F814A71220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biz126.ImageLib", "Biz126.ImageLib\Biz126.ImageLib.csproj", "{61019471-A6F3-469A-8938-69F814A71220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biz126.WebTools", "Biz126.WebTools\Biz126.WebTools.csproj", "{1EE75431-0A0C-4803-83AB-845A7F7CC252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biz126.WebTools", "Biz126.WebTools\Biz126.WebTools.csproj", "{1EE75431-0A0C-4803-83AB-845A7F7CC252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biz126.Logger", "Biz126.Logger\Biz126.Logger.csproj", "{B28DBEE3-1D84-4625-A804-FD5595E53B18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biz126.Logger", "Biz126.Logger\Biz126.Logger.csproj", "{B28DBEE3-1D84-4625-A804-FD5595E53B18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biz126.WebUI", "Biz126.WebUI\Biz126.WebUI.csproj", "{D65531AE-8C1E-48E7-B943-F9C516156317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biz126.WebUI", "Biz126.WebUI\Biz126.WebUI.csproj", "{D65531AE-8C1E-48E7-B943-F9C516156317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biz126.BlazorUI", "Biz126.BlazorUI\Biz126.BlazorUI.csproj", "{1E3B94B8-64C5-4563-AC1B-7C177687432A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D65531AE-8C1E-48E7-B943-F9C516156317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D65531AE-8C1E-48E7-B943-F9C516156317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D65531AE-8C1E-48E7-B943-F9C516156317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E3B94B8-64C5-4563-AC1B-7C177687432A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3B94B8-64C5-4563-AC1B-7C177687432A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E3B94B8-64C5-4563-AC1B-7C177687432A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E3B94B8-64C5-4563-AC1B-7C177687432A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

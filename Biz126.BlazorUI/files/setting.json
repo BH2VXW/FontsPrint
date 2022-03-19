@@ -1,0 +1,22 @@
+﻿{
+  "FZHJJT.TTF": "A1 方正汉简简体",
+  "FZCHSJT.TTF": "A2 方正粗黑宋简体",
+  "FZCTHJT.ttf": "A3 方正粗谭黑简体",
+  "FZTTJT.ttf": "A4 方正淘淘简体",
+  "FZXIANGLJW.TTF": "A5 方正祥隶简体",
+  "FZYBXSJW.TTF": "A6 方正硬笔行书简体",
+  "msyh.ttc":"A7 微软雅黑",
+  "FZBWKSJW.TTF":"A8 方正北魏楷书简体",
+  "FZHCJW.TTF":"A9 方正黄草简体",
+  "FZHZGBJT.TTF":"A10 方正汉真广标简体",
+  "arial.ttf":"B1 Arial",
+  "impact.ttf":"B2 Impact",
+  "georgiab.ttf":"B3 Georgiab",
+  "Vivaldi.ttf":"B4 Vivaldi",
+  "CASTELAR.TTF":"B5 CASTELAR",
+  "Asiyah Script - Demo.otf":"B6 Asiyah Script - Demo",
+  "Arenski.ttf":"B7 Arenski",
+  "BRADHITC.TTF":"B8 BRADHITC",
+  "seguibli.ttf":"B9 Seguibli",
+  "lightmorning.ttf":"B10 Lightmorning"
+}
